@@ -1,4 +1,5 @@
 using System;
+using OOD.Scripts.Weapon;
 using UnityEngine;
 
 namespace OOD.Scripts.Enemies
@@ -7,10 +8,12 @@ namespace OOD.Scripts.Enemies
     {
         public int attackDamage;
         private Transform player;
+        private GunController _gunController;
 
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
+            _gunController = GetComponent<GunController>();
         }
 
         public override void Move() {
@@ -20,7 +23,7 @@ namespace OOD.Scripts.Enemies
         }
 
         public override void Attack() {
-            // Debug.Log("Attack");
+            Debug.Log("Attack");
         }
 
         private void OnCollisionEnter(Collision other)
@@ -29,14 +32,7 @@ namespace OOD.Scripts.Enemies
             {
                 Attack();
             }
-            if (other.gameObject.tag == "Bullet1")
-            {
-                //Decrease health of enemy
-                health -= 5; //todo --> change the value to be bullet specific 
-
-                //Destroy the bullet on impact with enemy
-                Destroy(other.gameObject);
-            }
+            
         }
     }
 }

@@ -944,7 +944,7 @@ PrefabInstance:
     - target: {fileID: 2725428114866098408, guid: 919a87b8026dc664dab6426fdb63f5c1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.301528
+      value: 6.781528
       objectReference: {fileID: 0}
     - target: {fileID: 2725428114866098408, guid: 919a87b8026dc664dab6426fdb63f5c1,
         type: 3}
@@ -1154,7 +1154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751026030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.52, z: 0}
   m_LocalScale: {x: 300, y: 1, z: 300}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1712,7 +1712,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424298558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8000001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1760,6 +1760,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1907918821771943251, guid: 0bbe7c356c4ed2e418cca3590544f1cb,
     type: 3}
   muzzleTransform: {fileID: 87138610}
+  bulletRange: 100
 --- !u!1 &1877324805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,7 +2212,7 @@ PrefabInstance:
     - target: {fileID: 1483941702997168951, guid: d627da0e583bc9e43811c4a9282bb7bd,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

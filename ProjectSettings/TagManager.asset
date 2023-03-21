@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet1
+  - MeeleEnemy
   layers:
   - Default
   - TransparentFX
