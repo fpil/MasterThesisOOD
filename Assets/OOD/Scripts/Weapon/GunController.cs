@@ -10,7 +10,8 @@ namespace OOD.Scripts.Weapon
         public GameObject bulletPrefab;
         public Transform muzzleTransform;
         public float bulletRange = 100f;
-        public float bulletSpeed = 0.00000002f;
+        public float bulletSpeed = 1.9f;
+        private Vector3 bulletDirection;
 
         void Update()
         {
@@ -24,7 +25,6 @@ namespace OOD.Scripts.Weapon
         {
             GameObject bullet = Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
             Vector3 bulletVelocity = muzzleTransform.forward * bulletRange;
-
             StartCoroutine(UpdateBulletPosition(bullet, bulletVelocity));
 
             // Destroy the bullet after 2 seconds
@@ -42,11 +42,12 @@ namespace OOD.Scripts.Weapon
                     {
                         var meeleEnemy = hit.collider.gameObject.GetComponent<MeeleEnemy>();
                         meeleEnemy.health -= 5; 
+                        Debug.Log("Decrease");
                     }
                     Destroy(bullet);
                     yield break;
                 }
-                bullet.transform.position += muzzleTransform.forward * bulletRange * bulletSpeed;
+                bullet.transform.position += bullet.transform.forward * bulletRange * bulletSpeed  * Time.deltaTime;
 
                 yield return null;
             }
