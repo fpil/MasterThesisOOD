@@ -10,9 +10,7 @@ namespace OOD.Scripts.Weapon
         public GameObject bulletPrefab;
         public Transform muzzleTransform;
         public float bulletRange = 100f;
-        public float bulletSpeed = 1.9f;
-        private Vector3 bulletDirection;
-
+        public float bulletSpeed = 100f;
         void Update()
         {
             if (Input.GetButtonDown("Fire1"))
@@ -38,16 +36,15 @@ namespace OOD.Scripts.Weapon
                 RaycastHit hit;
                 if (Physics.Raycast(bullet.transform.position, velocity.normalized, out hit, velocity.magnitude * Time.deltaTime))
                 {
-                    if (hit.collider.gameObject.tag == "MeeleEnemy")
+                    if (hit.collider.gameObject.CompareTag("MeeleEnemy"))
                     {
                         var meeleEnemy = hit.collider.gameObject.GetComponent<MeeleEnemy>();
                         meeleEnemy.health -= 5; 
-                        Debug.Log("Decrease");
                     }
                     Destroy(bullet);
                     yield break;
                 }
-                bullet.transform.position += bullet.transform.forward * bulletRange * bulletSpeed  * Time.deltaTime;
+                bullet.transform.position += velocity * bulletSpeed * Time.deltaTime;
 
                 yield return null;
             }
