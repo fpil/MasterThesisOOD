@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
         float separationForce = 1f;
         Collider[] colliders = Physics.OverlapSphere(transform.position, separationRadius);
         foreach (Collider collider in colliders) {
-            if (collider.gameObject.CompareTag("MeeleEnemy") && collider.gameObject != gameObject) {
+            if (collider.gameObject.CompareTag("MeeleEnemy") && collider.gameObject != gameObject) { //Todo --> change the default tag when more enemies are added
                 Vector3 separationDirection = (transform.position - collider.transform.position).normalized;
                 separationDirection.y = 0f;
                 transform.position += separationDirection * separationForce * Time.deltaTime;
@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Move();
+        Attack();
         if (health <= 0)
         {
             Die();
