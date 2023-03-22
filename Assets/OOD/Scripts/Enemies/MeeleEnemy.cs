@@ -1,5 +1,3 @@
-using System;
-using OOD.Scripts.Weapon;
 using UnityEngine;
 
 namespace OOD.Scripts.Enemies
