@@ -27,21 +27,14 @@ namespace OOD.Scripts.Enemies
 
         public override void Attack()
         {
-            Vector3 direction = (player.position - transform.position).normalized;
-
             // check if enough time has passed since the last attack
             if (Time.time - lastAttackTime >= attackCooldown)
             {
-                // Raycast collision checking
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, direction, out hit, 1.0f))
+                float distance = Vector3.Distance(player.transform.position, transform.position);
+                if (distance <= 1.5f)
                 {
-                    if (hit.collider.gameObject.CompareTag("Player"))
-                    {
-                        //todo --> add attack behavior
-                        Debug.Log("Attack");
-                        lastAttackTime = Time.time; // update lastAttackTime to the current time
-                    }
+                    Debug.Log("ATTACK");
+                    lastAttackTime = Time.time; // update lastAttackTime to the current time
                 }
             }
         }

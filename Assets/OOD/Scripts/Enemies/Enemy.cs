@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     public virtual void Separate()
     {
         // Separation behavior
-        float separationRadius = 2f;
+        float separationRadius = 1f;
         float separationForce = 1f;
         Collider[] colliders = Physics.OverlapSphere(transform.position, separationRadius);
         foreach (Collider collider in colliders) {
