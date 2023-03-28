@@ -1628,7 +1628,7 @@ GameObject:
   - component: {fileID: 1424298559}
   - component: {fileID: 1424298563}
   - component: {fileID: 1424298564}
-  - component: {fileID: 1424298566}
+  - component: {fileID: 1424298565}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7466e674358cb0f40bf043b29615f3d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1424298566
+--- !u!114 &1424298565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1759,14 +1759,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1424298558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d102f707c054845aad431221011c15, type: 3}
+  m_Script: {fileID: 11500000, guid: 4877b24ea9f6e2645ab029f0de1f066e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1907918821771943251, guid: 0bbe7c356c4ed2e418cca3590544f1cb,
     type: 3}
   muzzleTransform: {fileID: 87138610}
-  bulletRange: 100
-  bulletSpeed: 0.2
 --- !u!1 &1877324805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,7 +2161,7 @@ PrefabInstance:
     - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
         type: 3}
       propertyPath: numEnemies
-      value: 500
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1483941702997168949, guid: d627da0e583bc9e43811c4a9282bb7bd,
         type: 3}

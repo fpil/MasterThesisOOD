@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace OOD.Scripts.Enemies
 {
-    public class MeeleEnemy : Enemy
+    public class MeleeEnemy : Enemy
     {
         public int attackDamage;
         private Transform player;

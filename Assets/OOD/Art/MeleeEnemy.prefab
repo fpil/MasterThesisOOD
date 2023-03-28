@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5161231533056654443}
   - component: {fileID: 5161231533056654442}
   - component: {fileID: 5161231533056654441}
-  - component: {fileID: 148290682989488833}
+  - component: {fileID: 3788146812262052106}
   m_Layer: 0
-  m_Name: MeeleEnemy
-  m_TagString: MeeleEnemy
+  m_Name: MeleeEnemy
+  m_TagString: MeleeEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &148290682989488833
+--- !u!114 &3788146812262052106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,12 +118,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5161231533056654440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87a4c9e264f873d40898da4d1b5e8ba3, type: 3}
+  m_Script: {fileID: 11500000, guid: b7540a2251a48364da4c494b1ff7f130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  speed: 3.5
-  attackDamage: 20
+  speed: 3
+  attackDamage: 0
 --- !u!1 &5161231533456626825
 GameObject:
   m_ObjectHideFlags: 0

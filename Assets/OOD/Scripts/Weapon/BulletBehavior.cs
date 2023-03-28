@@ -25,9 +25,9 @@ public class BulletBehavior : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, bulletVelocity.normalized, out hit, bulletVelocity.magnitude * Time.deltaTime))
         {
-            if (hit.collider.gameObject.CompareTag("MeeleEnemy"))
+            if (hit.collider.gameObject.CompareTag("MeleeEnemy"))
             {
-                var meeleEnemy = hit.collider.gameObject.GetComponent<MeeleEnemy>();
+                var meeleEnemy = hit.collider.gameObject.GetComponent<MeleeEnemy>();
                 meeleEnemy.health -= 5; 
             }
             Destroy(gameObject);
