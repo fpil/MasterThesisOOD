@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet1
   - MeeleEnemy
+  - Muzzle
   layers:
   - Default
   - TransparentFX
