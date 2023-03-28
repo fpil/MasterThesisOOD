@@ -2160,8 +2160,30 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
         type: 3}
+      propertyPath: meleeEnemy
+      value: 
+      objectReference: {fileID: 5161231533056654440, guid: 69553eb173aaa404795c58505013bf65,
+        type: 3}
+    - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
+        type: 3}
       propertyPath: numEnemies
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
+        type: 3}
+      propertyPath: rangeEnemy
+      value: 
+      objectReference: {fileID: 5161231533056654440, guid: cb564e79e4253974ab193dc94f851cf6,
+        type: 3}
+    - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
+        type: 3}
+      propertyPath: numMeleeEnemies
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
+        type: 3}
+      propertyPath: numRangeEnemies
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1483941702997168949, guid: d627da0e583bc9e43811c4a9282bb7bd,
         type: 3}
