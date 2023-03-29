@@ -18,5 +18,4 @@ namespace OOD.Scripts.Enemies
             }
         }
     }
-
 }

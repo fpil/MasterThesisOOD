@@ -26,8 +26,6 @@ public class Enemy : MonoBehaviour
         Vector3 direction = (player.position - transform.position).normalized;
         transform.position += direction * speed * Time.deltaTime;
         transform.rotation = Quaternion.LookRotation(direction);
-
-        Separate();
     }
     public void Separate()
     {
@@ -36,7 +34,7 @@ public class Enemy : MonoBehaviour
         float separationForce = 1f;
         Collider[] colliders = Physics.OverlapSphere(transform.position, separationRadius);
         foreach (Collider collider in colliders) {
-            if (collider.gameObject.CompareTag("MeleeEnemy") && collider.gameObject != gameObject) { //Todo --> change the default tag when more enemies are added
+            if ((collider.gameObject.CompareTag("MeleeEnemy") || collider.gameObject.CompareTag("RangeEnemy")) && collider.gameObject != gameObject) { //Todo --> change the default tag when more enemies are added
                 Vector3 separationDirection = (transform.position - collider.transform.position).normalized;
                 separationDirection.y = 0f;
                 transform.position += separationDirection * separationForce * Time.deltaTime;
@@ -55,6 +53,7 @@ public class Enemy : MonoBehaviour
     {
         Move();
         Attack();
+        Separate();
         if (health <= 0)
         {
             Die();

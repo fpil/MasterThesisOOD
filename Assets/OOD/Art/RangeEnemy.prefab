@@ -126,8 +126,10 @@ MonoBehaviour:
   player: {fileID: 0}
   lastAttackTime: 0
   damage: 0
-  attackCooldown: 1.5
-  range: 15
+  attackCooldown: 3
+  range: 30
+  ThrowablePrefab: {fileID: 1907918821771943251, guid: 1abd5c983b3dde740b176ec76810e1cb,
+    type: 3}
 --- !u!1 &5161231533456626825
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ TagManager:
   - Muzzle
   - MeleeEnemy
   - RangeEnemy
+  - Thowable
   layers:
   - Default
   - TransparentFX

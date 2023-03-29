@@ -4,27 +4,43 @@ namespace OOD.Scripts.Enemies
 {
     public class RangeEnemy : Enemy
     {
-        private bool isStandingStill;
-        private Vector3 savedPosition;
+        public GameObject ThrowablePrefab;
+        private bool shouldMove;
+
         public override void Attack()
         {
-            if (isStandingStill) {
-                transform.position = savedPosition;
-                float distance = Vector3.Distance(player.transform.position, transform.position);
-                if (distance <= range)
-                {
-                    Debug.Log("RangedATTACK");
-                    lastAttackTime = Time.time; // update lastAttackTime to the current time
-                    // isStandingStill = false; todo this is now correct behavior
-                }
+            float distance = Vector3.Distance(player.transform.position, transform.position);
+            if (distance>range)
+            {
+                shouldMove = true;
             }
             else
             {
-                if (Time.time - lastAttackTime >= attackCooldown)
+                shouldMove = false;
+                if (lastAttackTime >= attackCooldown)
                 {
-                    savedPosition = transform.position;
-                    isStandingStill = true;
+                    SpawnEnemyThrowable();
+                    lastAttackTime = 0f;
                 }
+            }
+            lastAttackTime += Time.deltaTime;
+        }
+
+        private void SpawnEnemyThrowable()
+        {
+            GameObject throwableGameObject = Instantiate(ThrowablePrefab, transform.position, new Quaternion());
+            Throwable script = throwableGameObject.AddComponent<Throwable>();
+            script.enemyTransform = transform;
+            script.playerTransform = player.transform;
+        }
+
+        public override void Move()
+        {
+            Vector3 direction = (player.position - transform.position).normalized;
+            transform.rotation = Quaternion.LookRotation(direction);
+            if (shouldMove)
+            {
+                transform.position += direction * speed * Time.deltaTime;
             }
         }
     }
