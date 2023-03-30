@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Throwable : MonoBehaviour
@@ -11,6 +12,7 @@ public class Throwable : MonoBehaviour
     private float distance;
     private Vector3 startPos;
     private Vector3 targetPos;
+    private float terrainHeight = -1.52f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,14 +30,27 @@ public class Throwable : MonoBehaviour
         float missingDistance = distanceSoFar / distance;
 
         Vector3 currentPos = Vector3.Lerp(startPos, targetPos, missingDistance);
-        currentPos.y = Mathf.Lerp(startPos.y, targetPos.y, missingDistance) + height * Mathf.Sin(missingDistance * Mathf.PI);
+        float parabolaHeight = height * Mathf.Sin(missingDistance * Mathf.PI);
+        currentPos.y = Mathf.Max(Mathf.Lerp(startPos.y, targetPos.y, missingDistance) + parabolaHeight, terrainHeight);
 
         transform.position = currentPos;
-        
-        //todo --> fix the height parameters 
-        if (transform.position.y<0)
+
+        if (transform.position.y <= targetPos.y)
         {
             Destroy(gameObject);
+        }
+        Collision();
+    }
+
+    void Collision()
+    {
+        float radius = .2f;
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        foreach (Collider collider in colliders) {
+            if (collider.gameObject.CompareTag("Player") && collider.gameObject != gameObject) { 
+               Debug.Log("Collision with player");
+               Destroy(gameObject);
+            }
         }
     }
 }
