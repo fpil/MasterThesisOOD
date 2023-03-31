@@ -9,6 +9,8 @@ TagManager:
   - MeleeEnemy
   - RangeEnemy
   - Thowable
+  - Shotgun
+  - Handgun
   layers:
   - Default
   - TransparentFX

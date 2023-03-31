@@ -343,17 +343,22 @@ PrefabInstance:
     - target: {fileID: 2726340542712584721, guid: 13f45ced9c793094dbbeb00fba884e73,
         type: 3}
       propertyPath: m_Name
-      value: MachineGun
+      value: ShotGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726340542712584721, guid: 13f45ced9c793094dbbeb00fba884e73,
+        type: 3}
+      propertyPath: m_TagString
+      value: Shotgun
       objectReference: {fileID: 0}
     - target: {fileID: 2726340542712584734, guid: 13f45ced9c793094dbbeb00fba884e73,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2726340542712584734, guid: 13f45ced9c793094dbbeb00fba884e73,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2726340542712584734, guid: 13f45ced9c793094dbbeb00fba884e73,
         type: 3}

@@ -10,25 +10,33 @@ namespace OOD.Scripts.Weapon
         public Transform muzzleTransform;
         private float fireCooldown = 0.5f; // set the fire cooldown time
         private float timeSinceLastShot;
+        private WeaponController weaponController;
 
         private void Start()
         {
             muzzleTransform = GameObject.FindWithTag("Muzzle").transform;
+            weaponController = FindObjectOfType<WeaponController>();
         }
 
         void Update()
         {
-            //todo --> modify this so that it uses inheritance
-            // if (Input.GetButtonDown("Fire1"))
-            // {
-            //     SpawnBullet();
-            // }
-            if (Input.GetButtonDown("Fire1") && timeSinceLastShot > fireCooldown)
+            if (weaponController.activeWeapon == "HandGun")
             {
-                SpawnBulletSpread();
-                timeSinceLastShot = 0;
+                // todo --> modify this so that it uses inheritance
+                 if (Input.GetButtonDown("Fire1"))
+                 {
+                     SpawnBullet();
+                 }
             }
-            timeSinceLastShot += Time.deltaTime;
+            else if(weaponController.activeWeapon == "ShotGun")
+            {
+                if (Input.GetButtonDown("Fire1") && timeSinceLastShot > fireCooldown)
+                {
+                    SpawnBulletSpread();
+                    timeSinceLastShot = 0;
+                }
+                timeSinceLastShot += Time.deltaTime;
+            }
         }
 
         private void SpawnBullet()
