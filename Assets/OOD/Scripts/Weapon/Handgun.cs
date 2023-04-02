@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Handgun : Weapon
 {
-    public float fireCooldown = 0.2f;
+    private float fireCooldown = 0.3f;
     private float timeSinceLastShot;
     void Update()
     {
