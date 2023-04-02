@@ -19,7 +19,7 @@ public class Shotgun : Weapon
     
     public override void SpawnBullet()
     {
-        float spread = 2.0f; // set the spread factor
+        float spread = 2.0f;
         for (int i = 0; i < 6; i++) // spawn 5 bullets
         {
             Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spread, spread), Random.Range(-spread, spread), 0f); // create random spread rotation

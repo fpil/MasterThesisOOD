@@ -19,8 +19,9 @@ namespace OOD.Scripts.Weapon
         
         public override void SpawnBullet()
         {
-            //todo --> figure out why the first shot is a shotgun shotr
-            Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation);
+            float spread = 2.0f;
+            Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spread, spread), Random.Range(-spread, spread), 0f); // create random spread rotation
+            Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation * spreadRotation); // spawn bullet with spread rotation
         }
     }
 }
