@@ -5,25 +5,20 @@ namespace OOD.Scripts.Enemies
     public class RangeEnemy : Enemy
     {
         public GameObject ThrowablePrefab;
-        private bool shouldMove;
 
         public override void Attack()
         {
+            lastAttackTime += Time.deltaTime;
             float distance = Vector3.Distance(player.transform.position, transform.position);
-            if (distance>range)
+            if (distance<range)
             {
-                shouldMove = true;
-            }
-            else
-            {
-                shouldMove = false;
+                // shouldMove = true;
                 if (lastAttackTime >= attackCooldown)
                 {
                     SpawnEnemyThrowable();
                     lastAttackTime = 0f;
                 }
             }
-            lastAttackTime += Time.deltaTime;
         }
 
         private void SpawnEnemyThrowable()
@@ -38,10 +33,7 @@ namespace OOD.Scripts.Enemies
         {
             Vector3 direction = (player.position - transform.position).normalized;
             transform.rotation = Quaternion.LookRotation(direction);
-            if (shouldMove)
-            {
-                transform.position += direction * speed * Time.deltaTime;
-            }
+            transform.position += direction * speed * Time.deltaTime;
         }
     }
 }
