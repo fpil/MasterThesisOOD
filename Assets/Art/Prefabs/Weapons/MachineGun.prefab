@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 4045003196256288964}
   - component: {fileID: 4045003196256288967}
   - component: {fileID: 4045003196256288966}
-  - component: {fileID: 7243424825514005625}
   - component: {fileID: 6772682659898323342}
   m_Layer: 0
   m_Name: MachineGun
@@ -255,21 +254,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7243424825514005625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4045003196256288971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03cf8ad572f93164b8f72ab1108b1808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1907918821771943251, guid: 0bbe7c356c4ed2e418cca3590544f1cb,
-    type: 3}
-  muzzleTransform: {fileID: 0}
 --- !u!114 &6772682659898323342
 MonoBehaviour:
   m_ObjectHideFlags: 0
