@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.OOD.Scripts.Loot;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -12,8 +13,6 @@ public class Enemy : MonoBehaviour
     public int damage;
     public float attackCooldown;
     public float range;
-
-
 
     private void Start()
     {
@@ -46,6 +45,8 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
+        LootSpawner lootSpawner = FindObjectOfType<LootSpawner>();
+        lootSpawner.SpawnLoot(gameObject.transform.position);
         Destroy(gameObject);
     }
 
