@@ -19,11 +19,15 @@ public class Shotgun : Weapon
     
     public override void SpawnBullet()
     {
-        float spread = 2.0f;
-        for (int i = 0; i < 6; i++) // spawn 5 bullets
+        if (_weaponController.shotgunAmmo > 0)
         {
-            Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spread, spread), Random.Range(-spread, spread), 0f); // create random spread rotation
-            Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation * spreadRotation); // spawn bullet with spread rotation
+            float spread = 2.0f;
+            for (int i = 0; i < 6; i++) // spawn 5 bullets
+            {
+                Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spread, spread), Random.Range(-spread, spread), 0f); // create random spread rotation
+                Instantiate(bulletPrefab, muzzleTransform.position, muzzleTransform.rotation * spreadRotation); // spawn bullet with spread rotation
+            }
+            _weaponController.shotgunAmmo -= 1;
         }
     }
 }

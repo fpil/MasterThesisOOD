@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.OOD.Scripts.Loot;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DayNightController : MonoBehaviour
@@ -21,7 +23,16 @@ public class DayNightController : MonoBehaviour
         dayTime += Time.deltaTime;
         if (dayTime>maxDayTime)
         {
-            isNight = true;
+            if (!isNight)
+            {
+                isNight = true;
+                //Destroy all loot when new night cycle starts 
+                var loots = FindObjectsOfType<LootBehavior>();
+                foreach (var loot in loots)
+                {
+                    Destroy(loot.GameObject().gameObject);
+                }
+            }
         }
 
         var enemies = FindObjectsOfType<Enemy>();

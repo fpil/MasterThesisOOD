@@ -11,6 +11,8 @@ TagManager:
   - Thowable
   - Shotgun
   - Handgun
+  - ShotgunLoot
+  - MachinegunLoot
   layers:
   - Default
   - TransparentFX

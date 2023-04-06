@@ -8,6 +8,15 @@ public class WeaponController : MonoBehaviour
     public GameObject handGun;
     public GameObject shotGun;
     public GameObject machineGun;
+    public int shotgunAmmo;
+    public int machinegunAmmo;
+
+    void Start()
+    {
+        shotgunAmmo = 50;
+        machinegunAmmo = 200;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

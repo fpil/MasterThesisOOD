@@ -6,12 +6,12 @@ namespace OOD.Scripts.Weapon
     {
         public GameObject bulletPrefab;
         public Transform muzzleTransform;
-        private WeaponController weaponController;
+        public WeaponController _weaponController;
         // Start is called before the first frame update
         void Start()
         {
             muzzleTransform = GameObject.FindWithTag("Muzzle").transform;
-            weaponController = FindObjectOfType<WeaponController>();
+            _weaponController = FindObjectOfType<WeaponController>();
         }
         
         public virtual void SpawnBullet()

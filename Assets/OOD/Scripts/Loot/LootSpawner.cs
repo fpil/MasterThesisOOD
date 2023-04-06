@@ -11,10 +11,10 @@ namespace Assets.OOD.Scripts.Loot
         private int maxSpawnRate = 101;
         public void SpawnLoot(Vector3 spawnPosition)
         {
-            int spawnChance = Random.Range(0, 101);
+            int spawnChance = Random.Range(0, maxSpawnRate);
             if (spawnChance<=spawnRate)
             {
-                int spawnChanceItem = Random.Range(0, 101);
+                int spawnChanceItem = Random.Range(0, maxSpawnRate);
                 if (spawnRateItem <= spawnChanceItem)
                 {
                     Instantiate(shotgunLoot, spawnPosition, Quaternion.identity);
