@@ -128,6 +128,9 @@ MonoBehaviour:
   damage: 0
   attackCooldown: 3
   range: 30
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
   ThrowablePrefab: {fileID: 1907918821771943251, guid: 1abd5c983b3dde740b176ec76810e1cb,
     type: 3}
 --- !u!1 &5161231533456626825

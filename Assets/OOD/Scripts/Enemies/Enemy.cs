@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public int damage;
     public float attackCooldown;
     public float range;
+    public LayerMask obstacleLayer;
 
     private void Start()
     {
@@ -23,8 +24,26 @@ public class Enemy : MonoBehaviour
     public virtual void Move()
     {
         Vector3 direction = (player.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
-        transform.rotation = Quaternion.LookRotation(direction);
+        // Cast a ray in the direction the enemy is moving
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, direction, out hit, 1, obstacleLayer))
+        {
+            Vector3 newDirection = Vector3.zero;
+            Vector3 hitNormal = hit.normal;
+            hitNormal.y = 0.0f;
+            newDirection = Vector3.Reflect(direction, hitNormal);
+            newDirection = newDirection.normalized;
+    
+            // Move in the new direction
+            transform.position += newDirection * speed * Time.deltaTime;
+            transform.rotation = Quaternion.LookRotation(newDirection);
+        }
+        else
+        {
+            // If there are no obstacles, move towards the player
+            transform.position += direction * speed * Time.deltaTime;
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
     }
     public void Separate()
     {

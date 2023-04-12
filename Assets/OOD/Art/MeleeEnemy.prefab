@@ -128,6 +128,9 @@ MonoBehaviour:
   damage: 0
   attackCooldown: 1
   range: 1.5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &5161231533456626825
 GameObject:
   m_ObjectHideFlags: 0

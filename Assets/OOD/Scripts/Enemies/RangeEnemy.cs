@@ -28,12 +28,5 @@ namespace OOD.Scripts.Enemies
             script.enemyTransform = transform;
             script.playerTransform = player.transform;
         }
-
-        public override void Move()
-        {
-            Vector3 direction = (player.position - transform.position).normalized;
-            transform.rotation = Quaternion.LookRotation(direction);
-            transform.position += direction * speed * Time.deltaTime;
-        }
     }
 }
