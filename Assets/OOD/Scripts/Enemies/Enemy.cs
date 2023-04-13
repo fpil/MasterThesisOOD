@@ -24,19 +24,17 @@ public class Enemy : MonoBehaviour
     public virtual void Move()
     {
         Vector3 direction = (player.position - transform.position).normalized;
-        // Cast a ray in the direction the enemy is moving
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, direction, out hit, 1, obstacleLayer))
+        if (Physics.Raycast(transform.position, direction, out hit, 2, obstacleLayer))
         {
             Vector3 newDirection = Vector3.zero;
             Vector3 hitNormal = hit.normal;
             hitNormal.y = 0.0f;
             newDirection = Vector3.Reflect(direction, hitNormal);
             newDirection = newDirection.normalized;
-    
+
             // Move in the new direction
             transform.position += newDirection * speed * Time.deltaTime;
-            transform.rotation = Quaternion.LookRotation(newDirection);
         }
         else
         {

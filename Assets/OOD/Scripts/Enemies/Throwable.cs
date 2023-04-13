@@ -47,8 +47,7 @@ public class Throwable : MonoBehaviour
         float radius = .2f;
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider collider in colliders) {
-            if (collider.gameObject.CompareTag("Player") && collider.gameObject != gameObject) { 
-               Debug.Log("Collision with player");
+            if ((collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Obstacle")) && collider.gameObject != gameObject) { 
                Destroy(gameObject);
             }
         }
