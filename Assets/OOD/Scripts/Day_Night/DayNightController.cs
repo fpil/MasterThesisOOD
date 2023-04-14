@@ -12,6 +12,7 @@ public class DayNightController : MonoBehaviour
     public bool enemiesHasSpawned;
     public int enemiesLeft;
     public int dayNightCycleNumber;
+    public Light directionalLight; 
 
     void Start()
     {
@@ -43,6 +44,20 @@ public class DayNightController : MonoBehaviour
             isNight = false;
             enemiesHasSpawned = false;
             dayNightCycleNumber++;
+        }
+
+        ChangeLight();
+    }
+
+    void ChangeLight()
+    {
+        if (isNight)
+        {
+            directionalLight.intensity = 0;
+        }
+        else
+        {
+            directionalLight.intensity = 1; 
         }
     }
 }
