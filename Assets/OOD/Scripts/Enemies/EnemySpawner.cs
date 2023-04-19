@@ -13,7 +13,8 @@ public class EnemySpawner : MonoBehaviour
     public Vector3 spawnAreaSize = new Vector3(10, 0, 10);
     private DayNightController _dayNightController;
 
-    private List<GameObject> throwablePool = new List<GameObject>(); 
+    public List<GameObject> throwablePool = new List<GameObject>(); 
+    public List<GameObject> unavailableThrowablePool = new List<GameObject>(); 
 
     void Start()
     {
@@ -48,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
     //Only half the amount of enemies are allowed to shoot because the pool is half the size
     private void CreateThrowablePool()
     {
-        for (int i = 0; i < (numRangeEnemies * _dayNightController.dayNightCycleNumber)/2; i++)
+        for (int i = 0; i < (numRangeEnemies * _dayNightController.dayNightCycleNumber)/4; i++)
         {
             var newThrowable = Instantiate(throwable, Vector3.zero, Quaternion.identity);
             newThrowable.SetActive(false);
@@ -71,6 +72,8 @@ public class EnemySpawner : MonoBehaviour
             if (!throwable.activeInHierarchy)
             {
                 throwable.SetActive(true);
+                throwablePool.Remove(throwable);
+                unavailableThrowablePool.Add(throwable);
                 return throwable;
             }
         }

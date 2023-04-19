@@ -14,9 +14,12 @@ public class Throwable : MonoBehaviour
     public Vector3 targetPos;
     private float terrainHeight = -1.52f;
 
+    private EnemySpawner enemySpawner;
+
     // Start is called before the first frame update
     void Start()
     {
+        enemySpawner = GameObject.Find("Spawner").GetComponent<EnemySpawner>();
         // startTime = Time.time;
         // startPos = enemyTransform.position;
         // targetPos = playerTransform.position;
@@ -39,6 +42,10 @@ public class Throwable : MonoBehaviour
         {
             // Destroy(gameObject);
             gameObject.SetActive(false);
+            enemySpawner.unavailableThrowablePool.Remove(gameObject);
+            enemySpawner.throwablePool.Add(gameObject);
+            // Debug.Log("Un: " + enemySpawner.unavailableThrowablePool.Count);
+            // Debug.Log("Go: " + enemySpawner.throwablePool.Count);
         }
         Collision();
     }
@@ -51,6 +58,8 @@ public class Throwable : MonoBehaviour
             if ((collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Obstacle")) && collider.gameObject != gameObject) { 
                // Destroy(gameObject);
                gameObject.SetActive(false);
+               enemySpawner.unavailableThrowablePool.Remove(gameObject);
+               enemySpawner.throwablePool.Add(gameObject);
             }
         }
     }
