@@ -28260,7 +28260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayTime: 0
-  maxDayTime: 10
+  maxDayTime: 2
   isNight: 0
   enemiesHasSpawned: 0
   enemiesLeft: 0
@@ -63109,6 +63109,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
         type: 3}
+      propertyPath: throwable
+      value: 
+      objectReference: {fileID: 1907918821771943251, guid: 1abd5c983b3dde740b176ec76810e1cb,
+        type: 3}
+    - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
+        type: 3}
       propertyPath: meleeEnemy
       value: 
       objectReference: {fileID: 5161231533056654440, guid: 69553eb173aaa404795c58505013bf65,
@@ -63127,12 +63133,12 @@ PrefabInstance:
     - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
         type: 3}
       propertyPath: numMeleeEnemies
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1483941702997168948, guid: d627da0e583bc9e43811c4a9282bb7bd,
         type: 3}
       propertyPath: numRangeEnemies
-      value: 20
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1483941702997168949, guid: d627da0e583bc9e43811c4a9282bb7bd,
         type: 3}

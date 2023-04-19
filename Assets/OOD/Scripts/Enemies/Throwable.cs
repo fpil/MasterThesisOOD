@@ -3,24 +3,24 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
-    public Transform playerTransform;
-    public Transform enemyTransform;
+    // public Transform playerTransform;
+    // public Transform enemyTransform;
     public float speed = 5.0f;
     public float height = 2.0f;
 
-    private float startTime;
-    private float distance;
-    private Vector3 startPos;
-    private Vector3 targetPos;
+    public float startTime;
+    public float distance;
+    public Vector3 startPos;
+    public Vector3 targetPos;
     private float terrainHeight = -1.52f;
 
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.time;
-        startPos = enemyTransform.position;
-        targetPos = playerTransform.position;
-        distance = Vector3.Distance(startPos, targetPos);
+        // startTime = Time.time;
+        // startPos = enemyTransform.position;
+        // targetPos = playerTransform.position;
+        // distance = Vector3.Distance(startPos, targetPos);
     }
 
     // Update is called once per frame
@@ -37,7 +37,8 @@ public class Throwable : MonoBehaviour
 
         if (transform.position.y <= targetPos.y)
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         Collision();
     }
@@ -48,7 +49,8 @@ public class Throwable : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider collider in colliders) {
             if ((collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Obstacle")) && collider.gameObject != gameObject) { 
-               Destroy(gameObject);
+               // Destroy(gameObject);
+               gameObject.SetActive(false);
             }
         }
     }

@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public float range;
     public LayerMask obstacleLayer;
 
-    private void Start()
+    public virtual void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         lastAttackTime = Time.time; // initialize lastAttackTime to the current time
