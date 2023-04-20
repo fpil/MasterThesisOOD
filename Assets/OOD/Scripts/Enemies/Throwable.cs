@@ -1,10 +1,9 @@
 using System;
+using OOD.Scripts.Enemies;
 using UnityEngine;
 
 public class Throwable : MonoBehaviour
 {
-    // public Transform playerTransform;
-    // public Transform enemyTransform;
     public float speed = 5.0f;
     public float height = 2.0f;
 
@@ -14,16 +13,12 @@ public class Throwable : MonoBehaviour
     public Vector3 targetPos;
     private float terrainHeight = -1.52f;
 
-    private EnemySpawner enemySpawner;
+    private ThrowablePool throwablePool;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemySpawner = GameObject.Find("Spawner").GetComponent<EnemySpawner>();
-        // startTime = Time.time;
-        // startPos = enemyTransform.position;
-        // targetPos = playerTransform.position;
-        // distance = Vector3.Distance(startPos, targetPos);
+        throwablePool = GameObject.Find("Spawner").GetComponent<ThrowablePool>();
     }
 
     // Update is called once per frame
@@ -40,12 +35,8 @@ public class Throwable : MonoBehaviour
 
         if (transform.position.y <= targetPos.y)
         {
-            // Destroy(gameObject);
             gameObject.SetActive(false);
-            enemySpawner.unavailableThrowablePool.Remove(gameObject);
-            enemySpawner.throwablePool.Add(gameObject);
-            // Debug.Log("Un: " + enemySpawner.unavailableThrowablePool.Count);
-            // Debug.Log("Go: " + enemySpawner.throwablePool.Count);
+            throwablePool.ReturnThrowableToPool(gameObject);
         }
         Collision();
     }
@@ -56,10 +47,8 @@ public class Throwable : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider collider in colliders) {
             if ((collider.gameObject.CompareTag("Player") || collider.gameObject.CompareTag("Obstacle")) && collider.gameObject != gameObject) { 
-               // Destroy(gameObject);
                gameObject.SetActive(false);
-               enemySpawner.unavailableThrowablePool.Remove(gameObject);
-               enemySpawner.throwablePool.Add(gameObject);
+               throwablePool.ReturnThrowableToPool(gameObject);
             }
         }
     }

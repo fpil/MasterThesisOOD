@@ -5,13 +5,12 @@ namespace OOD.Scripts.Enemies
 {
     public class RangeEnemy : Enemy
     {
-        public GameObject ThrowablePrefab;
-        private EnemySpawner enemySpawner;
+        private ThrowablePool throwablePool;
         public override void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
             lastAttackTime = Time.time; // initialize lastAttackTime to the current time
-            enemySpawner = GameObject.Find("Spawner").GetComponent<EnemySpawner>(); 
+            throwablePool = GameObject.Find("Spawner").GetComponent<ThrowablePool>(); 
         }
 
         public override void Attack()
@@ -20,16 +19,12 @@ namespace OOD.Scripts.Enemies
             float distance = Vector3.Distance(player.transform.position, transform.position);
             if (distance<range)
             {
-                // shouldMove = true;
                 if (lastAttackTime >= attackCooldown)
                 {
-                    // SpawnEnemyThrowable();
-                    var throwableFromPool = enemySpawner.GetThrowableFromPool();
+                    var throwableFromPool = throwablePool.GetThrowableFromPool();
                     if (throwableFromPool != null)
                     {
                         Throwable script = throwableFromPool.GetComponent<Throwable>();
-                        // script.enemyTransform = transform;
-                        // script.playerTransform = player.transform;
 
                         if (script != null)
                         {
@@ -37,20 +32,12 @@ namespace OOD.Scripts.Enemies
                             script.startPos = transform.position;
                             script.targetPos = player.position;
                             script.distance = Vector3.Distance(script.startPos, script.targetPos);
-
+                    
                             lastAttackTime = 0f;
                         }
                     }
                 }
             }
-        }
-
-        private void SpawnEnemyThrowable()
-        {
-            GameObject throwableGameObject = Instantiate(ThrowablePrefab, transform.position, new Quaternion());
-            Throwable script = throwableGameObject.AddComponent<Throwable>();
-            // script.enemyTransform = transform;
-            // script.playerTransform = player.transform;
         }
     }
 }

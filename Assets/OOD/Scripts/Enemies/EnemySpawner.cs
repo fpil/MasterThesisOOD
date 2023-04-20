@@ -1,6 +1,5 @@
-using System.Collections.Generic;
+using OOD.Scripts.Enemies;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,13 +11,12 @@ public class EnemySpawner : MonoBehaviour
     public int numRangeEnemies;
     public Vector3 spawnAreaSize = new Vector3(10, 0, 10);
     private DayNightController _dayNightController;
-
-    public List<GameObject> throwablePool = new List<GameObject>(); 
-    public List<GameObject> unavailableThrowablePool = new List<GameObject>(); 
+    private ThrowablePool throwablePool;
 
     void Start()
     {
         _dayNightController = FindObjectOfType<DayNightController>();
+        throwablePool = gameObject.AddComponent<ThrowablePool>();
     }
 
     void Update()
@@ -27,8 +25,10 @@ public class EnemySpawner : MonoBehaviour
         {
             if (!_dayNightController.enemiesHasSpawned)
             {
-                EmptyThrowablePool();
-                CreateThrowablePool();
+                //Create the throwablePool
+                throwablePool.EmptyThrowableToPools();
+                throwablePool.CreatePool(throwable,(numRangeEnemies * _dayNightController.dayNightCycleNumber)/4);
+
                 //Add more enemies based on the number of cycles
                 var meleeSpawnEnemies = numMeleeEnemies * _dayNightController.dayNightCycleNumber;
                 var rangeSpawnEnemies = numRangeEnemies * _dayNightController.dayNightCycleNumber;
@@ -44,39 +44,5 @@ public class EnemySpawner : MonoBehaviour
                 _dayNightController.enemiesHasSpawned = true;
             }
         }
-    }
-    
-    //Only half the amount of enemies are allowed to shoot because the pool is half the size
-    private void CreateThrowablePool()
-    {
-        for (int i = 0; i < (numRangeEnemies * _dayNightController.dayNightCycleNumber)/4; i++)
-        {
-            var newThrowable = Instantiate(throwable, Vector3.zero, Quaternion.identity);
-            newThrowable.SetActive(false);
-            newThrowable.AddComponent<Throwable>();
-            throwablePool.Add(newThrowable);
-        }
-    }
-    private void EmptyThrowablePool()
-    {
-        foreach (var gameObject in throwablePool)
-        {
-            Destroy(gameObject);
-        }
-        throwablePool.Clear();
-    }
-    public GameObject GetThrowableFromPool()
-    {
-        foreach (var throwable in throwablePool)
-        {
-            if (!throwable.activeInHierarchy)
-            {
-                throwable.SetActive(true);
-                throwablePool.Remove(throwable);
-                unavailableThrowablePool.Add(throwable);
-                return throwable;
-            }
-        }
-        return null;
     }
 }
